@@ -14,70 +14,51 @@ import java.util.Collections;
  */
 public class ShoppingBasket {
 	
-	private final BigDecimal totalCost = new BigDecimal(50.0);
-	private ArrayList<Category> categoryList;
+
 	private ArrayList<Item> basket;
 	
-	
-	public ShoppingBasket() {		
-	}
-
 	
 	/**
 	 * @param categoryList
 	 */
-	public ShoppingBasket(ArrayList<Category> categoryList) {
+	public ShoppingBasket() {
 		super();
-		this.basket = new ArrayList<Item>();		
-		this.categoryList = categoryList;
+		this.basket = new ArrayList<Item>();
 	}
-	
 	
 	
 	/**
-	 * Method to fill shopping basket array list
+	 * This function will return existing item from the shopping basket
+	 * @param itemId
+	 * @return
 	 */
-	protected void fillShoppingBasket() {					
-		
-		for (int i=0; i<this.categoryList.size(); i++) {
-			
-			Category category = this.categoryList.get(i);			
-			ArrayList<Item> itemList = category.getItems();
-			
-			// Sort all the items in the category list based on the item rating in descending order
-			Collections.sort(itemList);
-			
-			// Get the 0th index from itemList as it has the highest rating
-			Item item = itemList.get(0);	
-			
-			
-			// If total cost of shopping basket not exceeds $50 
-			if (this.getTotalCostOfShoppingBasket().compareTo(this.totalCost) == -1) {
-				
-				// Add new item from each category to shopping basket
-				this.basket.add(item);
-				
-				System.out.println("Category : "+category.getCategoryId());
-				System.out.println(item.toString() +", Total Cost : "+item.getTotalCost() );	
-				System.out.println("Total Shopping Bucket Cost : "+this.getTotalCostOfShoppingBasket());
-				System.out.println("Sum Shopping Item Rating : "+this.getSumOfRatingsOfPickedItems());
-				
-				System.out.println();
-			}
-			else {
-				
-				// If basket total cost exceeds $50 then remove last added item 
-				this.basket.remove(i-1);
-				System.out.println();
-				System.out.println("Total Shopping Bucket Cost exceeds $50 ");
-				System.out.println("Total Shopping Bucket Cost : "+this.getTotalCostOfShoppingBasket());
-				System.out.println("Sum Shopping Item Rating : "+this.getSumOfRatingsOfPickedItems());
-				
-				break;
-			}					
-		}		
+	protected Item getItem(int itemId) {
+		return this.basket.get(itemId);
 	}
 	
+	
+	/**
+	 * This function will be adding new items to shopping basket
+	 * @param item
+	 */
+	protected void addItem(Item item) {
+		
+		this.basket.add(item);
+		
+	}
+	
+	/**
+	 * This function will remove an existing item from the shopping basket9
+	 * @param item
+	 */
+	protected void removeItem(Item item) {
+		
+		if (this.basket.contains(item)) {
+			this.basket.remove(item);
+		}
+		
+	}
+		
 	
 	/**
 	 * Method to get total cost of picked items in the shopping basket
