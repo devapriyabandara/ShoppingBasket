@@ -59,37 +59,30 @@ public class ShoppingBasketService {
 			// Sort all the items in the category list based on the item rating in descending order
 			Collections.sort(itemList);
 			
-			// Get the 0th index from itemList as it has the highest rating
-			Item item = itemList.get(0);	
-			
-			
-			// If total cost of shopping basket not exceeds $50 
-			if (this.basket.getTotalCostOfShoppingBasket().add(item.getTotalCost()).compareTo(this.totalCost) == -1) {
+			// Loop through all the items itemList from highest rating to lowest rating
+			for (int x=0; x<itemList.size(); x++) {
 				
-				// Add new item from each category to shopping basket
-				this.basket.addItem(item);
+				Item item = itemList.get(x);					
 				
-				System.out.println("Category"+category.getCategoryId() + ":Item:"+item.toString());
-				System.out.println(item.toString() +", Total Cost : "+item.getTotalCost() );	
-				System.out.println("Total Shopping Bucket Cost : "+this.basket.getTotalCostOfShoppingBasket());
-				System.out.println("Sum Shopping Item Rating : "+this.basket.getSumOfRatingsOfPickedItems());
-				System.out.println();
-			}
-			else {
-				
-				// If basket total cost exceeds $50 then remove last added item 
-				//this.basket.removeItem(this.basket.getItem(i-1));
-				
-				System.out.println();
-				System.out.println("Total Shopping Bucket Cost exceeds $50 ");
-				System.out.println("Total Shopping Bucket Cost : "+this.basket.getTotalCostOfShoppingBasket());
-				System.out.println("Sum Shopping Item Rating : "+this.basket.getSumOfRatingsOfPickedItems());
-				
-			}	
+				// If total cost of shopping basket and new item total cost not exceeds $50 
+				if (this.basket.getTotalCostOfShoppingBasket().add(item.getTotalCost()).compareTo(this.totalCost) == -1) {
+					
+					// Add new item from each category to shopping basket
+					this.basket.addItem(item);
+					break;
+					
+					/*
+					System.out.println("Category"+category.getCategoryId() + ":Item:"+item.toString());
+					System.out.println(item.toString() +", Total Cost : "+item.getTotalCost() );	
+					System.out.println("Total Shopping Bucket Cost : "+this.basket.getTotalCostOfShoppingBasket());
+					System.out.println("Sum Shopping Item Rating : "+this.basket.getSumOfRatingsOfPickedItems());
+					System.out.println();
+					*/
+				}
+			}			
 		}
 		
 		
-		System.out.println("---------");
 		for (Item item:this.basket.getItemList()) {
 			System.out.println(item.toString());
 		}

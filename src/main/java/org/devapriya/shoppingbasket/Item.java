@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * @author dbherath
  *
  */
-public class Item implements Comparable {
+public class Item implements Comparable<Item> {
 	
 	protected int categoryId;
 	protected int itemId;
@@ -89,7 +89,7 @@ public class Item implements Comparable {
 	 * this function overrides compareTo function
 	 */
 	@Override
-    public int compareTo(Object compareItem) {
+    public int compareTo(Item compareItem) {
 		
         int compareRating = ((Item)compareItem).getRating();
         
