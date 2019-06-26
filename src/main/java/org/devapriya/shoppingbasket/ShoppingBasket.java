@@ -99,4 +99,19 @@ public class ShoppingBasket {
 		return sumOfRatings;
 	}
 
+
+	@Override
+	public String toString() {
+		StringBuffer result = new StringBuffer();
+		
+		for (Item item:this.basket) {			
+			result.append(item.toString()).append("\n");
+		}
+		
+		return result.toString();
+	}
+	
+	
+	
+
 }

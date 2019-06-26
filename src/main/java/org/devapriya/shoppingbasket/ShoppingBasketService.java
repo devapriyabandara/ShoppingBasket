@@ -82,14 +82,13 @@ public class ShoppingBasketService {
 			}			
 		}
 		
-		
-		for (Item item:this.basket.getItemList()) {
-			System.out.println(item.toString());
-		}
-		
+	}
+	
+	
+	public void printShoppingBasket() {
+		System.out.println(this.basket.toString());
 		System.out.println("Total Shopping Bucket Cost : "+this.basket.getTotalCostOfShoppingBasket());
 		System.out.println("Sum Shopping Item Rating : "+this.basket.getSumOfRatingsOfPickedItems());
-		
 	}
 	
 	

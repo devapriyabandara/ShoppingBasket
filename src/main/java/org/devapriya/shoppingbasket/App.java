@@ -17,6 +17,7 @@ public class App
 	public App() {
     	basketService = new ShoppingBasketService();
         basketService.fillShoppingBasket();
+        basketService.printShoppingBasket();
     }
 	
 	
