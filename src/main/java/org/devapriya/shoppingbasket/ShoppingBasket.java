@@ -28,6 +28,14 @@ public class ShoppingBasket {
 	
 	
 	/**
+	 * This function will return all the items 
+	 * @return
+	 */
+	protected ArrayList<Item> getItemList(){
+		return this.basket;
+	}
+	
+	/**
 	 * This function will return existing item from the shopping basket
 	 * @param itemId
 	 * @return

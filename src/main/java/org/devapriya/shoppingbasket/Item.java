@@ -12,6 +12,7 @@ import java.math.BigDecimal;
  */
 public class Item implements Comparable {
 	
+	protected int categoryId;
 	protected int itemId;
 	protected int rating;
 	protected BigDecimal price;
@@ -20,17 +21,28 @@ public class Item implements Comparable {
 	
 	
 	/**
+	 * @param categoryId
 	 * @param itemId
 	 * @param price
 	 * @param shippingCost
 	 * @param rating
 	 */
-	public Item(int itemId, BigDecimal price, BigDecimal shippingCost, int rating) {
+	public Item(int categoryId, int itemId, BigDecimal price, BigDecimal shippingCost, int rating) {
 		super();
+		this.categoryId = categoryId;
 		this.itemId = itemId;
 		this.price = price;
 		this.shippingCost = shippingCost;
 		this.rating = rating;
+	}
+	
+	
+	/**
+	 * Get category id
+	 * @return the categoryId
+	 */
+	public int getCategoryId() {
+		return categoryId;
 	}
 	
 	/**
@@ -87,7 +99,7 @@ public class Item implements Comparable {
 	
 	@Override
 	public String toString() {
-		return "Item [itemId=" + itemId + ", price=" + price + ", shippingCost=" + shippingCost + ", rating=" + rating + "]";
+		return "Item [categoryId=" +categoryId+ ", itemId=" + itemId + ", price=" + price + ", shippingCost=" + shippingCost + ", rating=" + rating + "]";
 	}
 
 }

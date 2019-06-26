@@ -20,15 +20,16 @@ public class ItemFactory {
 	 * shipping cost - random shipping cost between $1-$5
 	 * rating - random rating between 1-5
 	 *  
+	 * @param categoryId - category id related to item list 
 	 * @param listSize - will define the size of item list
 	 * @return generated array list of items
 	 */
-	public static ArrayList<Item> createItemList(int listSize){
+	public static ArrayList<Item> createItemList(int categoryId, int listSize){
 		
 		ArrayList<Item> itemList = new ArrayList<Item>(listSize);
 		
 		for (int i=0; i<listSize; i++) {
-			itemList.add(i, new Item(i+1, Utilities.generateRandomItemPrice(), Utilities.generateRandomShippingCost(), Utilities.generateRandomRating()) );
+			itemList.add(i, new Item(categoryId, (i+1), Utilities.generateRandomItemPrice(), Utilities.generateRandomShippingCost(), Utilities.generateRandomRating()) );
 		}
 		
 		return itemList;
