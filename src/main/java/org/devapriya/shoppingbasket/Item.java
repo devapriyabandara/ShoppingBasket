@@ -156,7 +156,7 @@ public class Item implements Comparable<Item> {
 
 	@Override
 	public String toString() {
-		return "Item [categoryId=" +categoryId+ ", itemId=" + itemId + ", price=" + price + ", shippingCost=" + shippingCost + ", rating=" + rating + "]";
+		return "Item [categoryId=" +categoryId+ ", itemId=" + itemId + ", price=$" + price + ", shippingCost=$" + shippingCost + ", rating=" + rating + "]";
 	}
 
 }
