@@ -12,12 +12,19 @@ import java.math.BigDecimal;
  */
 public class Item implements Comparable<Item> {
 	
-	protected int categoryId;
-	protected int itemId;
-	protected int rating;
-	protected BigDecimal price;
-	protected BigDecimal shippingCost;
-	protected BigDecimal totalCost;
+	protected int categoryId = 0;
+	protected int itemId = 0;
+	protected int rating = 0;
+	protected BigDecimal price = new BigDecimal(0.00);
+	protected BigDecimal shippingCost = new BigDecimal(0.00);
+	protected BigDecimal totalCost = new BigDecimal(0.00);
+	
+	
+	/**
+	 * Default constructor
+	 */
+	public Item() {		
+	}
 	
 	
 	/**
@@ -97,6 +104,56 @@ public class Item implements Comparable<Item> {
     }
 	
 	
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + categoryId;
+		result = prime * result + itemId;
+		result = prime * result + ((price == null) ? 0 : price.hashCode());
+		result = prime * result + rating;
+		result = prime * result + ((shippingCost == null) ? 0 : shippingCost.hashCode());
+		result = prime * result + ((totalCost == null) ? 0 : totalCost.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		if (categoryId != other.categoryId)
+			return false;
+		if (itemId != other.itemId)
+			return false;
+		if (price == null) {
+			if (other.price != null)
+				return false;
+		} else if (!price.equals(other.price))
+			return false;
+		if (rating != other.rating)
+			return false;
+		if (shippingCost == null) {
+			if (other.shippingCost != null)
+				return false;
+		} else if (!shippingCost.equals(other.shippingCost))
+			return false;
+		if (totalCost == null) {
+			if (other.totalCost != null)
+				return false;
+		} else if (!totalCost.equals(other.totalCost))
+			return false;
+		return true;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Item [categoryId=" +categoryId+ ", itemId=" + itemId + ", price=" + price + ", shippingCost=" + shippingCost + ", rating=" + rating + "]";

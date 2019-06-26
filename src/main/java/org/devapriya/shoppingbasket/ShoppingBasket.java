@@ -41,7 +41,7 @@ public class ShoppingBasket {
 	 * @return
 	 */
 	protected Item getItem(int itemId) {
-		return this.basket.get(itemId);
+		return this.basket.stream().filter(item -> item.getItemId()==itemId).findFirst().orElse(null);
 	}
 	
 	
@@ -54,19 +54,6 @@ public class ShoppingBasket {
 		this.basket.add(item);
 		
 	}
-	
-	/**
-	 * This function will remove an existing item from the shopping basket9
-	 * @param item
-	 */
-	protected void removeItem(Item item) {
-		
-		if (this.basket.contains(item)) {
-			this.basket.remove(item);
-		}
-		
-	}
-		
 	
 	/**
 	 * Method to get total cost of picked items in the shopping basket
@@ -102,7 +89,7 @@ public class ShoppingBasket {
 
 	@Override
 	public String toString() {
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		
 		for (Item item:this.basket) {			
 			result.append(item.toString()).append("\n");

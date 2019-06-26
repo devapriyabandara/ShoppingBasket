@@ -10,8 +10,15 @@ import java.util.Random;
  */
 public class Category {
 
-	protected int categoryId;
+	protected int categoryId = 0;
 	protected ArrayList<Item> items = new ArrayList<Item>(10);
+	
+	
+	/**
+	 * Default Category
+	 */
+	public Category() {
+	}
 	
 
 	/**
@@ -41,16 +48,35 @@ public class Category {
 	public ArrayList<Item> getItems(){
 		return this.items;
 	}
-	
-	
-	/**
-	 * Function to get random Item object from items array list
-	 * @return Item object
-	 */
-	public Item getRandomItem() {
-		return items.get(new Random().nextInt(items.size()));
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + categoryId;
+		result = prime * result + ((items == null) ? 0 : items.hashCode());
+		return result;
 	}
 
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Category other = (Category) obj;
+		if (categoryId != other.categoryId)
+			return false;
+		if (items == null) {
+			if (other.items != null)
+				return false;
+		} else if (!items.equals(other.items))
+			return false;
+		return true;
+	}
 
 
 	@Override
